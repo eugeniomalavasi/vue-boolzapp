@@ -55,8 +55,7 @@
 
                 <!-- CONTACT LIST -->
                 <div class="users_list">
-                    <div class="user flex" v-for="(curContact, index) in contacts"
-                        @click.stop="activeIndex = index; classCheck = !classCheck" :class="{'active' : classCheck}">
+                    <div class="user flex" v-for="(curContact, index) in contacts" @click.stop="activeIndex = index; classCheck = !classCheck" :class="{'active' : classCheck}">
                         <img :src="`./img/avatar${curContact.avatar}.jpg`" alt="Margherita">
                         <div class="contact_box hide">
                             <h4>{{ curContact.name }}</h4>
@@ -150,22 +149,8 @@
                 <!-- ALL MESSAGE CONTAINER -->
                 <div class="message_container">
                     <!-- MESSAGE SEND -->
-                    <div v-for="(curMessage) in contacts[activeIndex].messages"
-                        :class="{'send' : curMessage.status === 'sent'}">
-                        <p class="text_message">{{ curMessage.message }}</p>
-                        <div class="flex">
-                            <div class="pop_hover"><i class="fa-solid fa-chevron-down"></i>
-                                <ul class="pop_up_menu">
-                                    <li class="pop_up_option">Info messaggio</li>
-                                    <li class="pop_up_option">Cancella messaggio</li>
-                                </ul>
-                            </div>
-                            <span class="time">14.07</span>
-                        </div>
-                    </div>
-                    <!-- RECEIVED MESSAGE -->
-                    <div v-for="(curMessage) in contacts[activeIndex].messages"
-                        :class="{'received' : curMessage.status === 'received'}">
+                    <!-- <div class="received" v-for="(curMessage) in contacts[activeIndex].messages"> -->
+                        <div v-for="(curMessage) in contacts[activeIndex].messages" :class="{'send' : curMessage.status === 'sent', 'received' : curMessage.status === 'received'}">
                         <p class="text_message">{{ curMessage.message }}</p>
                         <div class="flex">
                             <div class="pop_hover"><i class="fa-solid fa-chevron-down"></i>
