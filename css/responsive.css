@@ -1,0 +1,87 @@
+/* HEADER MEDIA QUERY */
+/* 940PX */
+@media screen and (max-width: 1038px) {
+    body::before {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+        margin: 0 auto;
+        height: 100vh;
+        top: 0px;
+    }
+    
+    .left_header {
+        justify-content: center;
+    }
+    .left_header .hide {
+        display: none;
+        }
+    .left_clmn {
+        width: 15%;
+        height: 100%;
+        
+    }
+    .right_clmn {
+        width: 85%;
+        height: 100%;
+    }
+
+    .notification_bar {
+        display: none;
+    }
+
+    .right_clmn .message_container {
+        height: calc(100vh - 145px);
+    }
+    .search_bar {
+        display: none;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .users_list {
+        height: calc(100vh - 145px);
+    }
+
+    .user {
+        justify-content: center;
+    }
+    .left_header img {
+        margin: 0;
+    }
+}
+
+/* 440PX */
+@media screen and (max-width: 440px) {
+    .left_clmn {
+        display: none;
+    }
+
+    .right_clmn {
+        width: 100%;
+    }
+
+    .wrapper i {
+        display: none;
+    }
+
+    .send {
+        width: 90%;
+    }
+
+    .received {
+        width: 90%;
+    }
+
+    footer {
+        justify-content: center;
+    }
+
+    .flex .pop_hover i {
+        font-size: 0.8rem;
+        display: inline-block;
+    }
+}
