@@ -55,11 +55,11 @@
 
                 <!-- CONTACT LIST -->
                 <div class="users_list">
-                    <div class="user flex" v-for="curContact in contacts">
+                    <div class="user flex" v-for="(curContact, index) in contacts" @click="activeIndex = index">
                         <img :src="`./img/avatar${curContact.avatar}.jpg`" alt="Margherita">
                         <div class="contact_box hide">
                             <h4>{{ curContact.name }}</h4>
-                            <p>Ciao come va la vita?</p>
+                            <p>{{ curContact.messages[0].message }}</p>
                         </div>
                         <p class="time hide">15.37</p>
                     </div>
@@ -149,26 +149,8 @@
                 <!-- ALL MESSAGE CONTAINER -->
                 <div class="message_container">
                     <!-- MESSAGE SEND -->
-                    <div class="send">
-                        <p class="text_message">Non posso farlo, Sam. Lo so. È tutto sbagliato. Noi non dovremmo nemmeno
-                            essere qui. Ma ci siamo. È come nelle grandi storie, padron Frodo. Quelle che contano
-                            davvero.
-                            Erano piene di oscurità e pericoli, e a volte non volevi sapere il finale. Perché come
-                            poteva
-                            esserci un finale allegro? Come poteva il mondo tornare com'era dopo che erano successe
-                            tante
-                            cose brutte? Ma alla fine è solo una cosa passeggera, quest'ombra. Anche l'oscurità deve
-                            passare. Arriverà un nuovo giorno. E quando il sole splenderà, sarà ancora più luminoso.
-                            Quelle
-                            erano le storie che ti restavano dentro, anche se eri troppo piccolo per capire il perché.
-                            Ma
-                            credo, padron Frodo, di capire, ora. Adesso so. Le persone di quelle storie avevano molte
-                            occasioni di tornare indietro e non l'hanno fatto. Andavano avanti, perché loro erano
-                            aggrappate
-                            a qualcosa.
-                            Noi a cosa siamo aggrappati, Sam?
-                            C'è del buono in questo mondo, padron Frodo. È giusto combattere per questo.
-                        </p>
+                    <div class="send" v-for="(curMessage) in contacts[activeIndex].messages">
+                        <p class="text_message">{{ curMessage.message }}</p>
                         <div class="flex">
                             <div class="pop_hover"><i class="fa-solid fa-chevron-down"></i>
                                 <ul class="pop_up_menu">
@@ -182,90 +164,10 @@
                     </div>
                     <!-- MESSAGE RECEIVED -->
                     <div class="received">
-                        <p class="text_message">Guardateli sono spaventati... Glielo si legge negli occhi. E hanno
-                            ragione. Trecento... contro diecimila?
-                            Hanno più speranza di difendersi qui che a Edoras.
-                            Aragorn, non possono vincere questa battaglia... Moriranno tutti!
-                            E allora io morirò come uno di loro!</p>
-                        <div class="flex">
-                            <div class="pop_hover"><i class="fa-solid fa-chevron-down"></i>
-                                <ul class="pop_up_menu">
-                                    <li class="pop_up_option">Info messaggio</li>
-                                    <li class="pop_up_option">Cancella messaggio</li>
-                                </ul>
-                            </div>
-                            <span class="time">14.07</span>
-                        </div>
-                    </div>
-                    <div class="send">
-                        <p class="text_message">Dove sono cavallo e cavaliere? Dov'è il corno dal suono violento? Dove
-                            sono l'elmo e lo scudiero, e la fulgida capigliatura al vento? Dov'è la mano sull'arpa, e il
-                            rosso fuoco ardente? Dov'è la primavera e la messe, ed il biondo grano crescente? Son
-                            passati come pioggia sulla montagna, come raffiche di vento in campagna; i giorni scompaiono
-                            ad ovest, dietro i colli che un mare d'ombra bagna. Chi riunirà il fumo del legno morto
-                            incandescente? Chi tornerà dal Mare e potrà mirare il tempo lungo e fuggente?</p>
-                        <div class="flex">
-                            <div class="pop_hover"><i class="fa-solid fa-chevron-down"></i>
-                                <ul class="pop_up_menu">
-                                    <li class="pop_up_option">Info messaggio</li>
-                                    <li class="pop_up_option">Cancella messaggio</li>
-                                </ul>
-                            </div>
-                            <span class="time">14.07</span>
-                        </div>
-                    </div>
-                    <!-- MESSAGE RECEIVED -->
-                    <div class="received">
                         <p class="text_message">È vero, non si vedono molte donne, tra i nani. In effetti, sono talmente
                             simili nella voce e nell'aspetto che spesso vengono scambiate per uomini nani. Questo, a sua
                             volta, ha dato origine alla credenza che non esistano donne tra i nani, e che i nani,
                             ecco...spuntino dalle buche del terreno. Il che, naturalmente, è ridicolo.</p>
-                        <div class="flex">
-                            <div class="pop_hover"><i class="fa-solid fa-chevron-down"></i>
-                                <ul class="pop_up_menu">
-                                    <li class="pop_up_option">Info messaggio</li>
-                                    <li class="pop_up_option">Cancella messaggio</li>
-                                </ul>
-                            </div>
-                            <span class="time">14.07</span>
-                        </div>
-                    </div>
-                    <div class="send">
-                        <p class="text_message">È come nelle grandi storie, padron Frodo, quelle che contano davvero.
-                            Erano piene di oscurità e pericolo, e a volte non volevi sapere il finale, perchè come
-                            poteva esserci un finale allegro, come poteva il mondo tornare com'era dopo che erano
-                            successe tante cose brutte? Ma alla fine è solo una cosa passeggera, quest'ombra. Anche
-                            l'oscurità deve passare. Arriverà un nuovo giorno, e quando il sole splenderà sarà ancora
-                            più luminoso. Quelle erano le storie che ti restavano dentro, anche se eri troppo piccolo
-                            per capire il perchè. Ma credo, padron Frodo, di capire ora, adesso so. Le persone di quelle
-                            storie avevano molte occasioni di tornare indietro e non l'hanno fatto... Andavano avanti,
-                            perchè loro erano aggrappati a qualcosa</p>
-                        <div class="flex">
-                            <div class="pop_hover"><i class="fa-solid fa-chevron-down"></i>
-                                <ul class="pop_up_menu">
-                                    <li class="pop_up_option">Info messaggio</li>
-                                    <li class="pop_up_option">Cancella messaggio</li>
-                                </ul>
-                            </div>
-                            <span class="time">14.07</span>
-                        </div>
-                    </div>
-                    <!-- MESSAGE RECEIVED -->
-                    <div class="received">
-                        <p class="text_message">Irromperanno su questa fortezza come l'acqua sulle roccie. Le orde di
-                            Saruman saccheggieranno e appiccheranno il fuoco, una cosa già vista. Le culture si possono
-                            riseminare, le case ricostruire. All'interno di queste mura... Noi sopravviveremo.
-                            Non vengono a distruggere le culture o i villaggi di Rohan ma la popolazione. Fino
-                            all'ultimo bambino!
-                            Che cosa dovrei fare io? Guarda i miei uomini, il loro coraggio è appeso a un filo. Se
-                            dev'essere la nostra fine, allora farò fare loro una GRANDE fine che venga ricordata per
-                            sempre!
-                            Invia messaggeri mio signore. Tu devi chiedere aiuto!
-                            E chi verrà?... Gli elfi, i nani?... Non siamo fortunati come te nelle amicizie. Le vecchie
-                            alleanze sono morte.
-                            Gondor risponderà.
-                            Gondor!? Dov'era Gondor quando cadde l'Ovestfalda!? Dov'era Gondor quando i nostri vicini ci
-                            hanno circondato!? Dov'era Gon... No mio signore Aragorn. Noi siamo soli.</p>
                         <div class="flex">
                             <div class="pop_hover"><i class="fa-solid fa-chevron-down"></i>
                                 <ul class="pop_up_menu">

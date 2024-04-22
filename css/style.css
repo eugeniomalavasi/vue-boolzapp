@@ -284,7 +284,9 @@ i:hover+.pop_up_menu {
     
 }
 
-
+.active {
+    background-color: #009688;
+}
 
 /* FOOTER */
 
