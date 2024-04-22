@@ -8,6 +8,7 @@ createApp({
                 {
                     name: 'Michele',
                     avatar: '_1',
+                    classCheck: false,
                     visible: true,
                     messages: [
                         {

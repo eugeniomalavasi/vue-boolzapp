@@ -55,7 +55,8 @@
 
                 <!-- CONTACT LIST -->
                 <div class="users_list">
-                    <div class="user flex" v-for="(curContact, index) in contacts" @click="activeIndex = index">
+                    <div class="user flex" v-for="(curContact, index) in contacts"
+                        @click.stop="activeIndex = index; classCheck = !classCheck" :class="{'active' : classCheck}">
                         <img :src="`./img/avatar${curContact.avatar}.jpg`" alt="Margherita">
                         <div class="contact_box hide">
                             <h4>{{ curContact.name }}</h4>
@@ -137,7 +138,7 @@
                 <header class="header right_header flex">
                     <img :src="`./img/avatar${contacts[activeIndex].avatar}.jpg`" alt="account avatar">
                     <div class="contact_info">
-                        <h3>Bruce Dickinson</h3>
+                        <h3>{{ contacts[activeIndex].name }}</h3>
                         <p>Ultimo accesso: 02.40</p>
                     </div>
                     <div class="header_icons flex">
@@ -149,7 +150,8 @@
                 <!-- ALL MESSAGE CONTAINER -->
                 <div class="message_container">
                     <!-- MESSAGE SEND -->
-                    <div class="send" v-for="(curMessage) in contacts[activeIndex].messages">
+                    <div v-for="(curMessage) in contacts[activeIndex].messages"
+                        :class="{'send' : curMessage.status === 'sent'}">
                         <p class="text_message">{{ curMessage.message }}</p>
                         <div class="flex">
                             <div class="pop_hover"><i class="fa-solid fa-chevron-down"></i>
@@ -160,14 +162,11 @@
                             </div>
                             <span class="time">14.07</span>
                         </div>
-
                     </div>
-                    <!-- MESSAGE RECEIVED -->
-                    <div class="received">
-                        <p class="text_message">È vero, non si vedono molte donne, tra i nani. In effetti, sono talmente
-                            simili nella voce e nell'aspetto che spesso vengono scambiate per uomini nani. Questo, a sua
-                            volta, ha dato origine alla credenza che non esistano donne tra i nani, e che i nani,
-                            ecco...spuntino dalle buche del terreno. Il che, naturalmente, è ridicolo.</p>
+                    <!-- RECEIVED MESSAGE -->
+                    <div v-for="(curMessage) in contacts[activeIndex].messages"
+                        :class="{'received' : curMessage.status === 'received'}">
+                        <p class="text_message">{{ curMessage.message }}</p>
                         <div class="flex">
                             <div class="pop_hover"><i class="fa-solid fa-chevron-down"></i>
                                 <ul class="pop_up_menu">
@@ -178,7 +177,6 @@
                             <span class="time">14.07</span>
                         </div>
                     </div>
-
                 </div>
                 <!-- FOOTER -->
                 <footer class="flex">
