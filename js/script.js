@@ -173,11 +173,10 @@ createApp({
     }, methods: {
         sendMessage: function () {
             const newMessage = {
-                    
                     message: this.messageInput,
-                    status: 'sent'
-                    
-            }
+                    status: 'sent'                 
+                }
+                this.messageInput = ""
             this.contacts[this.activeIndex].messages.push(newMessage)
             console.log(this.contacts);
             console.log(newMessage);
