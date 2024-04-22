@@ -168,9 +168,9 @@
                     <i class="fa-regular fa-face-smile"></i>
                     <div class="write_input flex">
                         <label for="message"></label>
-                        <input type="text" id="message" placeholder="Scrivi un messaggio">
+                        <input type="text" id="message" placeholder="Scrivi un messaggio" @keyup.enter="sendMessage" v-model="messageInput">
                     </div>
-                    <i class="fa-solid fa-microphone"></i>
+                    <i class="fa-solid fa-microphone" @click="sendMessage"></i>
                 </footer>
             </div>
         </div>

@@ -4,11 +4,11 @@ createApp({
     data() {
         return {
             activeIndex: 0,
+            classCheck: false,
             contacts: [
                 {
                     name: 'Michele',
                     avatar: '_1',
-                    classCheck: false,
                     visible: true,
                     messages: [
                         {
@@ -167,9 +167,20 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
+            messageInput: "",
         }
     }, methods: {
-
-    }
-}).mount('#app')
+        sendMessage: function () {
+            const newMessage = {
+                    
+                    message: this.messageInput,
+                    status: 'sent'
+                    
+            }
+            this.contacts[this.activeIndex].messages.push(newMessage)
+            console.log(this.contacts);
+            console.log(newMessage);
+            }
+        }
+    }).mount('#app')
