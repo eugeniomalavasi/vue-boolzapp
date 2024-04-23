@@ -63,7 +63,7 @@
                             <h4>{{ curContact.name }}</h4>
                             <p>{{ curContact.messages[0].message }}</p>
                         </div>
-                        <p class="time hide">15.37</p>
+                        <p class="time hide">{{ timeDate }}</p>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                     <img :src="`./img/avatar${contacts[activeIndex].avatar}.jpg`" alt="account avatar">
                     <div class="contact_info">
                         <h3>{{ contacts[activeIndex].name }}</h3>
-                        <p>Ultimo accesso: 02.40</p>
+                        <p>Ultimo accesso: {{ timeDate }}</p>
                     </div>
                     <div class="header_icons flex">
                         <a href=""><i class="fa-solid fa-arrow-rotate-right"></i></a>

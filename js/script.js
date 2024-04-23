@@ -171,6 +171,7 @@ createApp({
             messageInput: "",
             popUp: false,
             searchInput: "",
+            timeDate: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.TIME_SIMPLE)
         }
     }, methods: {
         sendMessage: function () {
@@ -206,7 +207,8 @@ createApp({
                 }
                 console.log(curName);
             });
+        }, timeStamps: function () {
+            this.timeDate
         }
-
-    }
+    },
 }).mount('#app')
