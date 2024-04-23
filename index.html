@@ -55,79 +55,16 @@
 
                 <!-- CONTACT LIST -->
                 <div class="users_list">
-                    <div class="user flex" v-for="(curContact, index) in contacts" @click.stop="activeIndex = index; classCheck = !classCheck" :class="{'active' : classCheck}">
-                        <img :src="`./img/avatar${curContact.avatar}.jpg`" alt="Margherita">
+                    <div class="user flex" v-for="(curContact, index) in contacts"
+                        @click.stop="activeIndex = index; classCheck = !classCheck"
+                        :class="{'active' : activeIndex === index}">
+                        <img :src="`./img/avatar${curContact.avatar}.jpg`" alt="user image">
                         <div class="contact_box hide">
                             <h4>{{ curContact.name }}</h4>
                             <p>{{ curContact.messages[0].message }}</p>
                         </div>
                         <p class="time hide">15.37</p>
                     </div>
-                    <!-- <div class="user flex">
-                        <img src="./img/avatar_2.jpg" alt="Margherita">
-                        <div class="contact_box hide">
-                            <h4>Sam</h4>
-                            <p>Ciao come va la vita?</p>
-                        </div>
-                        <p class="time hide">15.37</p>
-                    </div>
-                    <div class="user flex">
-                        <img src="./img/avatar_3.jpg" alt="Margherita">
-                        <div class="contact_box hide">
-                            <h4>Frodo</h4>
-                            <p>Ciao come va la vita?</p>
-                        </div>
-                        <p class="time hide">15.37</p>
-                    </div>
-                    <div class="user flex">
-                        <img src="./img/avatar_4.jpg" alt="Margherita">
-                        <div class="contact_box hide">
-                            <h4>Aragorn</h4>
-                            <p>Ciao come va la vita?</p>
-                        </div>
-                        <p class="time hide">15.37</p>
-                    </div>
-                    <div class="user flex">
-                        <img src="./img/avatar_5.jpg" alt="Margherita">
-                        <div class="contact_box hide">
-                            <h4>Legolas</h4>
-                            <p>Ciao come va la vita?</p>
-                        </div>
-                        <p class="time hide">15.37</p>
-                    </div>
-                    <div class="user flex">
-                        <img src="./img/avatar_6.jpg" alt="Margherita">
-                        <div class="contact_box hide">
-                            <h4>Gimli</h4>
-                            <p>Ciao come va la vita?</p>
-                        </div>
-                        <p class="time hide">15.37</p>
-                    </div>
-                    <div class="user flex">
-                        <img src="./img/avatar_7.jpg" alt="Margherita">
-                        <div class="contact_box hide">
-                            <h4>Gandalf</h4>
-                            <p>Ciao come va la vita?</p>
-                        </div>
-                        <p class="time hide">15.37</p>
-                    </div>
-                    <div class="user flex">
-                        <img src="./img/avatar_8.jpg" alt="Margherita">
-                        <div class="contact_box hide">
-                            <h4>Boromir</h4>
-                            <p>Ciao come va la vita?</p>
-                        </div>
-                        <p class="time hide">15.37</p>
-                    </div>
-                    <div class="user flex">
-                        <img src="./img/avatar_8.jpg" alt="Margherita">
-                        <div class="contact_box hide">
-                            <h>Faramir</h>
-                            <p>Ciao come va la vita?</p>
-                        </div>
-                        <p class="time hide">15.37</p>
-                    </div> -->
-
                 </div>
             </div>
 
@@ -149,14 +86,15 @@
                 <!-- ALL MESSAGE CONTAINER -->
                 <div class="message_container">
                     <!-- MESSAGE SEND -->
-                    <!-- <div class="received" v-for="(curMessage) in contacts[activeIndex].messages"> -->
-                        <div v-for="(curMessage) in contacts[activeIndex].messages" :class="{'send' : curMessage.status === 'sent', 'received' : curMessage.status === 'received'}">
+                    <div v-for="(curMessage, index) in contacts[activeIndex].messages"
+                        :class="{'send' : curMessage.status === 'sent', 'received' : curMessage.status === 'received'}">
                         <p class="text_message">{{ curMessage.message }}</p>
                         <div class="flex">
-                            <div class="pop_hover"><i class="fa-solid fa-chevron-down"></i>
-                                <ul class="pop_up_menu">
-                                    <li class="pop_up_option">Info messaggio</li>
-                                    <li class="pop_up_option">Cancella messaggio</li>
+                            <i class="fa-solid fa-chevron-down" @click="popUp = !popUp"></i>
+                            <div class="pop_hover pop_up_menu" :class="{'pop_up_active' : popUp}">
+                                <ul>
+                                <li class="pop_up_option">Info messaggio</li>
+                                <li @click="deleteMsg(index)">Cancella messaggio</li>
                                 </ul>
                             </div>
                             <span class="time">14.07</span>
@@ -168,13 +106,17 @@
                     <i class="fa-regular fa-face-smile"></i>
                     <div class="write_input flex">
                         <label for="message"></label>
-                        <input type="text" id="message" placeholder="Scrivi un messaggio" @keyup.enter="sendMessage" v-model="messageInput">
+                        <input type="text" id="message" placeholder="Scrivi un messaggio"
+                            @keyup.enter="{sendMessage(); autoAnswerTimer()}" v-model="messageInput">
                     </div>
                     <i class="fa-solid fa-microphone" @click="sendMessage"></i>
                 </footer>
             </div>
         </div>
     </div>
+    <!-- LUXON -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+    <!-- /LUXON -->
     <script src="./js/script.js"></script>
 </body>
 

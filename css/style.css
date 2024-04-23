@@ -168,6 +168,7 @@ header img {
     align-items: center;
     border: 1px solid #B6B9BB;
     padding-left: 1rem;
+    cursor: pointer;
 }
 
 .user img {
@@ -261,17 +262,23 @@ header img {
     justify-content: space-between;
     position: relative;
 }
+ul {
+    list-style: none;
+}
 
+.pop_hover {
+    display: none;
+}
 .pop_up_menu {
     background-color: white;
-    list-style-type: none;
     position: absolute;
     right: 10px;
-    top: 30px;
+    top: 50px;
     display: none;
     color: black;
     border-radius: 5px;
     box-shadow: 5px 5px 5px gray;
+    z-index: 1;
 }
 
 .pop_up_option {
@@ -279,15 +286,20 @@ header img {
 }
 
 /* hover chevron pop up menu */
-i:hover+.pop_up_menu {
-    display: block;
-    
+.pop_up_active {
+    display: block; 
+    padding: 5px;
+    cursor: pointer;
 }
 
 .active {
     background-color: #009688;
+    color: white;
 }
 
+#message {
+    width: 100%;
+}
 /* FOOTER */
 
 footer {

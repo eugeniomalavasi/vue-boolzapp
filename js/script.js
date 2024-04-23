@@ -169,17 +169,28 @@ createApp({
                 }
             ],
             messageInput: "",
+            popUp: false
         }
     }, methods: {
         sendMessage: function () {
             const newMessage = {
-                    message: this.messageInput,
-                    status: 'sent'                 
-                }
-                this.messageInput = ""
+                message: this.messageInput,
+                status: 'sent'
+            };
+            this.messageInput = ""
             this.contacts[this.activeIndex].messages.push(newMessage)
-            console.log(this.contacts);
-            console.log(newMessage);
+        }, autoAnswer: function () {
+            const answMessage = {
+                message: "Mi chiamo Massimo Decimo Meridio, comandante dell'esercito del Nord, generale delle legioni Felix, servo leale dell'unico vero imperatore Marco Aurelio. Padre di un figlio assassinato, marito di una moglie uccisa... e avrò la mia vendetta... in questa vita o nell'altra",
+                status: 'received',
             }
+            this.contacts[this.activeIndex].messages.push(answMessage)
+        }, autoAnswerTimer: function () {
+            setTimeout(this.autoAnswer, 1000)
+        }, deleteMsg: function (index) {
+            this.contacts[this.activeIndex].messages.splice(index, 1);
+            console.log("ciao");
         }
-    }).mount('#app')
+
+    }
+}).mount('#app')
