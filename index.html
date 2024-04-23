@@ -49,7 +49,7 @@
                     <div class="search_box">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <label for="search_contacts"></label>
-                        <input type="search" id="search_contacts" placeholder="cerca fra i tuoi amici" v-model="searchInput" @keyup.enter="searchBar">
+                        <input type="search" id="search_contacts" placeholder="cerca fra i tuoi amici" v-model="searchInput" @keyup.enter="searchBar" @keyup.delete="resetSearchBar">
                     </div>
                 </div>
 

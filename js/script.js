@@ -209,6 +209,10 @@ createApp({
                 }
                 console.log(curName);
             });
+        },  resetSearchBar: function () {
+            this.contacts.forEach(curName => {
+                curName.visible = true
+            })
         }
     },
 }).mount('#app')
