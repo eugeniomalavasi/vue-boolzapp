@@ -55,13 +55,13 @@
 
                 <!-- CONTACT LIST -->
                 <div class="users_list">
-                    <div class="user flex" v-for="(curContact, index) in contacts"
+                    <div class="user flex overflow" v-for="(curContact, index) in contacts"
                         @click.stop="activeIndex = index; classCheck = !classCheck"
                         :class="{'active' : activeIndex === index}" v-show="curContact.visible">
                         <img :src="`./img/avatar${curContact.avatar}.jpg`" alt="user image">
                         <div class="contact_box hide">
                             <h4>{{ curContact.name }}</h4>
-                            <p>{{ curContact.messages[curContact.messages.length - 1].message }}</p>
+                            <p v-if="curContact.messages.length">{{ curContact.messages[curContact.messages.length - 1].message }}</p>
                         </div>
                         <p class="time hide">{{ timeDate }}</p>
                     </div>
@@ -85,13 +85,13 @@
                 </header>
                 <!-- ALL MESSAGE CONTAINER -->
                 <div class="message_container">
-                    <!-- MESSAGE SEND -->
+                    <!-- MESSAGE SECTION -->
                     <div v-for="(curMessage, index) in contacts[activeIndex].messages"
                         :class="{'send' : curMessage.status === 'sent', 'received' : curMessage.status === 'received'}">
                         <p class="text_message">{{ curMessage.message }}</p>
                         <div class="flex">
-                            <i class="fa-solid fa-chevron-down" @click="popUp = !popUp"></i>
-                            <div class="pop_hover pop_up_menu" :class="{'pop_up_active' : popUp} " >
+                            <i class="fa-solid fa-chevron-down" @click="popUpIndex = index"></i>
+                            <div class="pop_hover pop_up_menu" :class="{'pop_up_active' : popUpIndex === index}" >
                                 <ul>
                                 <li class="pop_up_option">Info messaggio</li>
                                 <li @click="deleteMsg(index)">Cancella messaggio</li>

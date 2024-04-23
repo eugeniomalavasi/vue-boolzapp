@@ -7,7 +7,7 @@ createApp({
             classCheck: false,
             contacts: [
                 {
-                    name: 'Michele',
+                    name: 'Massimo',
                     avatar: '_1',
                     visible: true,
                     messages: [
@@ -170,6 +170,7 @@ createApp({
             ],
             messageInput: "",
             popUp: false,
+            popUpIndex: 0,
             searchInput: "",
             timeDate: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.TIME_SIMPLE),
         }
@@ -201,7 +202,7 @@ createApp({
             console.log(this.contacts[this.activeIndex].messages);
         }, searchBar: function () {
             this.contacts.forEach(curName => {
-                
+
                 if (curName.name.toLowerCase().includes(this.searchInput.toLowerCase())) {
                     curName.visible = true;
                 } else {
@@ -209,7 +210,7 @@ createApp({
                 }
                 console.log(curName);
             });
-        },  resetSearchBar: function () {
+        }, resetSearchBar: function () {
             this.contacts.forEach(curName => {
                 curName.visible = true
             })
