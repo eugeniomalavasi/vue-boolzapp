@@ -169,7 +169,8 @@ createApp({
                 }
             ],
             messageInput: "",
-            popUp: false
+            popUp: false,
+            searchInput: "",
         }
     }, methods: {
         sendMessage: function () {
@@ -188,8 +189,23 @@ createApp({
         }, autoAnswerTimer: function () {
             setTimeout(this.autoAnswer, 1000)
         }, deleteMsg: function (index) {
-            this.contacts[this.activeIndex].messages.splice(index, 1);
-            console.log("ciao");
+            if (index > 0) {
+                this.contacts[this.activeIndex].messages.splice(index, 1);
+            } else {
+                this.contacts[this.activeIndex].messages.splice(0, 1);
+            }
+            console.log(index, this.activeIndex);
+            console.log(this.contacts[this.activeIndex].messages);
+        }, searchBar: function () {
+            this.contacts.forEach(curName => {
+                
+                if (curName.name.toLowerCase().includes(this.searchInput.toLowerCase())) {
+                    curName.visible = true;
+                } else {
+                    curName.visible = false;
+                }
+                console.log(curName);
+            });
         }
 
     }
