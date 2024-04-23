@@ -57,7 +57,7 @@
                 <div class="users_list">
                     <div class="user flex" v-for="(curContact, index) in contacts"
                         @click.stop="activeIndex = index; classCheck = !classCheck"
-                        :class="{'active' : activeIndex === index}">
+                        :class="{'active' : activeIndex === index}" v-show="curContact.visible">
                         <img :src="`./img/avatar${curContact.avatar}.jpg`" alt="user image">
                         <div class="contact_box hide">
                             <h4>{{ curContact.name }}</h4>
