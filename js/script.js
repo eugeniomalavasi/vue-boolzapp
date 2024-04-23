@@ -171,7 +171,7 @@ createApp({
             messageInput: "",
             popUp: false,
             searchInput: "",
-            timeDate: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.TIME_WITH_SECONDS),
+            timeDate: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.TIME_SIMPLE),
         }
     }, methods: {
         sendMessage: function () {
@@ -213,6 +213,6 @@ createApp({
             this.contacts.forEach(curName => {
                 curName.visible = true
             })
-        }
+        },
     },
 }).mount('#app')

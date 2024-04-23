@@ -61,7 +61,7 @@
                         <img :src="`./img/avatar${curContact.avatar}.jpg`" alt="user image">
                         <div class="contact_box hide">
                             <h4>{{ curContact.name }}</h4>
-                            <p>{{ curContact.messages[0].message }}</p>
+                            <p>{{ curContact.messages[curContact.messages.length - 1].message }}</p>
                         </div>
                         <p class="time hide">{{ timeDate }}</p>
                     </div>
