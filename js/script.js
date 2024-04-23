@@ -171,13 +171,14 @@ createApp({
             messageInput: "",
             popUp: false,
             searchInput: "",
-            timeDate: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.TIME_SIMPLE)
+            timeDate: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.TIME_WITH_SECONDS),
         }
     }, methods: {
         sendMessage: function () {
             const newMessage = {
                 message: this.messageInput,
-                status: 'sent'
+                status: 'sent',
+                date: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.DATETIME_SHORT_WITH_SECONDS)
             };
             this.messageInput = ""
             this.contacts[this.activeIndex].messages.push(newMessage)
@@ -185,6 +186,7 @@ createApp({
             const answMessage = {
                 message: "Mi chiamo Massimo Decimo Meridio, comandante dell'esercito del Nord, generale delle legioni Felix, servo leale dell'unico vero imperatore Marco Aurelio. Padre di un figlio assassinato, marito di una moglie uccisa... e avrò la mia vendetta... in questa vita o nell'altra",
                 status: 'received',
+                date: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.DATETIME_SHORT_WITH_SECONDS)
             }
             this.contacts[this.activeIndex].messages.push(answMessage)
         }, autoAnswerTimer: function () {
@@ -207,8 +209,6 @@ createApp({
                 }
                 console.log(curName);
             });
-        }, timeStamps: function () {
-            this.timeDate
         }
     },
 }).mount('#app')

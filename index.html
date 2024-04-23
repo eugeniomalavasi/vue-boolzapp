@@ -97,7 +97,7 @@
                                 <li @click="deleteMsg(index)">Cancella messaggio</li>
                                 </ul>
                             </div>
-                            <span class="time">14.07</span>
+                            <span class="time">{{ curMessage.date }}</span>
                         </div>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                         <input type="text" id="message" placeholder="Scrivi un messaggio"
                             @keyup.enter="{sendMessage(); autoAnswerTimer()}" v-model="messageInput">
                     </div>
-                    <i class="fa-solid fa-microphone" @click="sendMessage"></i>
+                    <i class="fa-solid fa-microphone"></i>
                 </footer>
             </div>
         </div>
