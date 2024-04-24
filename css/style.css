@@ -252,13 +252,13 @@ header img {
 .received .time {
     display: inline-block;
     font-size: 0.6rem;
-    text-align: right;
+    width: max-content
 }
 
 .send .time {
     display: inline-block;
     font-size: 0.6rem;
-    text-align: right;
+    width: max-content
 }
 
 .received .flex {

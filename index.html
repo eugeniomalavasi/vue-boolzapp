@@ -63,7 +63,7 @@
                             <h4>{{ curContact.name }}</h4>
                             <p v-if="curContact.messages.length">{{ curContact.messages[curContact.messages.length - 1].message }}</p>
                         </div>
-                        <p class="time hide">{{ curContact.messages[curContact.messages.length -1].date }}</p>
+                        <p class="time hide" v-if="curContact.messages.length">{{ curContact.messages[curContact.messages.length -1].date }}</p>
                     </div>
                 </div>
             </div>
