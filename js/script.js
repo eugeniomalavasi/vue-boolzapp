@@ -172,24 +172,38 @@ createApp({
             popUp: false,
             popUpIndex: 0,
             searchInput: "",
+            controll: 0,
             timeDate: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.TIME_SIMPLE),
         }
     }, methods: {
         sendMessage: function () {
-            const newMessage = {
-                message: this.messageInput,
-                status: 'sent',
-                date: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.DATETIME_SHORT_WITH_SECONDS)
-            };
-            this.messageInput = ""
-            this.contacts[this.activeIndex].messages.push(newMessage)
+            if(this.messageInput !== "") {
+                const newMessage = {
+                    message: this.messageInput,
+                    status: 'sent',
+                    date: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.DATETIME_SHORT_WITH_SECONDS)
+                };
+                this.messageInput = "";
+                this.controll++; 
+                this.contacts[this.activeIndex].messages.push(newMessage);
+            } else {
+                this.messageInput = "";
+                this.controll = 0;
+            }
+            console.log(this.controll);
         }, autoAnswer: function () {
+            const answArray = ["Mi chiamo Massimo Decimo Meridio, comandante dell'esercito del Nord, generale delle legioni Felix, servo leale dell'unico vero imperatore Marco Aurelio. Padre di un figlio assassinato, marito di una moglie uccisa... e avrò la mia vendetta... in questa vita o nell'altra", 
+            "Tutto ebbe inizio con la forgiatura dei grandi Anelli. Tre furono dati agli elfi, gli esseri immortali più saggi e leali di tutti. Sette ai re dei nani, grandi minatori e costruttori di città nelle montagne. E nove, nove Anelli furono dati alla razza degli uomini che più di qualunque cosa desiderano il potere.", 
+            "I am not in danger, Skyler. I am the danger. A guy opens his door and gets shot, and you think that of me? No. I am the one who knocks!"];
+            const rndNumber = Math.floor(Math.random() * 3);
+            if(this.controll > 0) {
             const answMessage = {
-                message: "Mi chiamo Massimo Decimo Meridio, comandante dell'esercito del Nord, generale delle legioni Felix, servo leale dell'unico vero imperatore Marco Aurelio. Padre di un figlio assassinato, marito di una moglie uccisa... e avrò la mia vendetta... in questa vita o nell'altra",
+                message: answArray[rndNumber],
                 status: 'received',
                 date: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.DATETIME_SHORT_WITH_SECONDS)
             }
             this.contacts[this.activeIndex].messages.push(answMessage)
+        }
         }, autoAnswerTimer: function () {
             setTimeout(this.autoAnswer, 1000)
         }, deleteMsg: function (index) {

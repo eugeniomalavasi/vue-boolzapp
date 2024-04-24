@@ -49,7 +49,7 @@
                     <div class="search_box">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <label for="search_contacts"></label>
-                        <input type="search" id="search_contacts" placeholder="cerca fra i tuoi amici" v-model="searchInput" @keyup.enter="searchBar" @keyup.delete="resetSearchBar">
+                        <input type="search" id="search_contacts" placeholder="cerca fra i tuoi amici" v-model.trim="searchInput" @keyup.enter="searchBar" @keyup.delete="resetSearchBar">
                     </div>
                 </div>
 
@@ -107,9 +107,10 @@
                     <div class="write_input flex">
                         <label for="message"></label>
                         <input type="text" id="message" placeholder="Scrivi un messaggio"
-                            @keyup.enter="{sendMessage(); autoAnswerTimer()}" v-model="messageInput">
+                            @keyup.enter="{sendMessage(); autoAnswerTimer()}" v-model.trim="messageInput">
                     </div>
-                    <i class="fa-solid fa-microphone"></i>
+                    <i class="fa-solid fa-microphone" v-if="messageInput === '' "></i>
+                    <i class="fa-solid fa-plane send_message" @click="{sendMessage(); autoAnswerTimer()}" v-else></i>
                 </footer>
             </div>
         </div>
