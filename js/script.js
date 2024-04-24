@@ -216,9 +216,9 @@ createApp({
             console.log(this.contacts[this.activeIndex].messages);
         }, 
         statusTimer: function() {
-            setTimeout(this.writingStatus,300);
-            setTimeout(this.onlineStatus,1300);
-            setTimeout(this.offlineStatus,2300);
+            setTimeout(this.writingStatus, 300);
+            setTimeout(this.onlineStatus, 1300);
+            setTimeout(this.offlineStatus, 2300);
         }, writingStatus: function () {
             this.statusTxt = "sta digitando";
         }, onlineStatus: function () {
