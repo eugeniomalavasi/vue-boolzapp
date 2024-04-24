@@ -173,6 +173,7 @@ createApp({
             popUpIndex: 0,
             searchInput: "",
             controll: 0,
+            statusTxt: "ultimo accesso",
             timeDate: luxon.DateTime.now().setLocale('it').toLocaleString(luxon.DateTime.TIME_SIMPLE),
         }
     }, methods: {
@@ -213,9 +214,19 @@ createApp({
             }
             console.log(index, this.activeIndex);
             console.log(this.contacts[this.activeIndex].messages);
+        }, 
+        statusTimer: function() {
+            setTimeout(this.writingStatus,300);
+            setTimeout(this.onlineStatus,1300);
+            setTimeout(this.offlineStatus,2300);
+        }, writingStatus: function () {
+            this.statusTxt = "sta digitando";
+        }, onlineStatus: function () {
+            this.statusTxt = "è online";
+        }, offlineStatus: function () {
+            this.statusTxt = "ultimo accesso";
         }, searchBar: function () {
             this.contacts.forEach(curName => {
-
                 if (curName.name.toLowerCase().includes(this.searchInput.toLowerCase())) {
                     curName.visible = true;
                 } else {

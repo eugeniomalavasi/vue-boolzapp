@@ -75,7 +75,7 @@
                     <img :src="`./img/avatar${contacts[activeIndex].avatar}.jpg`" alt="account avatar">
                     <div class="contact_info">
                         <h3>{{ contacts[activeIndex].name }}</h3>
-                        <p>Ultimo accesso: {{ timeDate }}</p>
+                        <p>{{ statusTxt }}: {{ timeDate }}</p>
                     </div>
                     <div class="header_icons flex">
                         <a href=""><i class="fa-solid fa-arrow-rotate-right"></i></a>
@@ -107,7 +107,7 @@
                     <div class="write_input flex">
                         <label for="message"></label>
                         <input type="text" id="message" placeholder="Scrivi un messaggio"
-                            @keyup.enter="{sendMessage(); autoAnswerTimer()}" v-model.trim="messageInput">
+                            @keyup.enter="{sendMessage(); autoAnswerTimer(); statusTimer()}" v-model.trim="messageInput">
                     </div>
                     <i class="fa-solid fa-microphone" v-if="messageInput === '' "></i>
                     <i class="fa-solid fa-plane send_message" @click="{sendMessage(); autoAnswerTimer()}" v-else></i>
