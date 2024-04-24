@@ -173,6 +173,7 @@ header img {
     border: 1px solid #B6B9BB;
     padding-left: 1rem;
     cursor: pointer;
+    justify-content: space-between;
 }
 
 .user img {
@@ -188,17 +189,20 @@ header img {
 }
 
 .contact_box {
-    padding-right: 2em;
+    width: 45%;
+    padding-right: 0.5rem;
 }
 
 .user p {
     color: #B6B9BB;
-    font-size: clamp(0.8rem, 1vw, 1.2rem);
+    font-size: clamp(0.2rem, 1vw, 1.2rem);
+    text-align: left;
 }
 
 .user h4 {
     margin-bottom: 0.3rem;
-    font-size: clamp(1rem, 1.1vw, 1.2rem);
+    font-size: clamp(0.8rem, 1.1vw, 1.2rem);
+    text-align: left;
 }
 
 .overflow {
